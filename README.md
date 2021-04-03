@@ -8,7 +8,7 @@ Extends the Functional parsing library [1] from Professor Graham Hutton
 Be sure to watch the video featuring the good Professor himself
 to learn more about Functional (or Combinator) parsing.
 
-[1] - http://www.cs.nott.ac.uk/~pszgmh/Parsing.hs
+1 - [Parsing.hs](http://www.cs.nott.ac.uk/~pszgmh/Parsing.hs) 
+2 - [Functional Parsing - Computerphile](https://www.youtube.com/watch?v=dDtZLm7HIJs&t=1194s)
 
-[2] - https://www.youtube.com/watch?v=dDtZLm7HIJs&t=1194s
 (c) 2021, Jason Chambers
