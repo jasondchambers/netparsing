@@ -12,11 +12,16 @@
 -- (c) 2021, Jason Chambers
 
 -- ipaddress ::= octet.octet.octet.octet
+-- MAC Address is a 12-digit hexadecimal number (6-Byte binary number), which is mostly represented by Colon-Hexadecimal notation
 
 import Parsing
+import Data.Char
 
 isOctet :: Int -> Bool
 isOctet n = n <= 255
+
+hexdigit :: Parser Char
+hexdigit = sat isHexDigit
 
 octet :: Parser String
 octet = do xs <- some digit
