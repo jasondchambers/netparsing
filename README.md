@@ -4,7 +4,7 @@ Network Element parsing library. Provides parsers for all sorts of
 things such as IP addresses, MAC addresses, CIDR ranges, IP6 addresses
 Indicators of Compromise and so on.
 
-Extends the Functional parsing library [1] from Professor Graham Hutton
+Extends the Functional parsing library [1] from Professor Graham Hutton.
 Be sure to watch the video[2] featuring the good Professor himself
 to learn more about Functional (or Combinator) parsing.
 
