@@ -35,7 +35,7 @@ macdelimiter = sat isMacDelimiter
 
 octet :: Parser String
 octet = do xs <- some digit
-           if (read xs) <= 255 then
+           if isOctet (read xs) then
               return (xs)
            else empty
 
@@ -50,23 +50,22 @@ ipaddress = do a <- octet
                d <- octet
                return (a ++ "." ++ b ++ "." ++ c ++ "." ++ d)
 
+byteinhex :: Parser String
+byteinhex = do digit1 <- hexdigit
+               digit2 <- hexdigit
+               return ([digit1] ++ [digit2])
+
 macaddress :: Parser String
-macaddress = do nib1 <- hexdigit
-                nib2 <- hexdigit
+macaddress = do byte1 <- byteinhex
                 delim <- macdelimiter
-                nib3 <- hexdigit
-                nib4 <- hexdigit
+                byte2 <- byteinhex
                 delim <- macdelimiter
-                nib5 <- hexdigit
-                nib6 <- hexdigit
+                byte3 <- byteinhex
                 delim <- macdelimiter
-                nib7 <- hexdigit
-                nib8 <- hexdigit
+                byte4 <- byteinhex
                 delim <- macdelimiter
-                nib9 <- hexdigit
-                nib10 <- hexdigit
+                byte5 <- byteinhex
                 delim <- macdelimiter
-                nib11 <- hexdigit
-                nib12 <- hexdigit
-                return ([nib1] ++ [nib2] ++ [delim] ++ [nib3] ++ [nib4] ++ [delim] ++ [nib5] ++ [nib6] ++ [delim] ++ 
-                        [nib7] ++ [nib8] ++ [delim] ++ [nib9] ++ [nib10] ++ [delim] ++ [nib11] ++ [nib12])
+                byte6 <- byteinhex
+                return (byte1 ++ [delim] ++ byte2 ++ [delim] ++ byte3 ++ [delim] ++ 
+                        byte4 ++ [delim] ++ byte5 ++ [delim] ++ byte6)
